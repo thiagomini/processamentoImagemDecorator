@@ -5,7 +5,6 @@ import com.pss.imagem.processamento.decorator.ImagemComponente;
 import com.pss.imagem.processamento.decorator.PixeladaDecorator;
 import com.pss.imagem.processamento.decorator.RotacionaDecorator;
 import com.pss.imagem.processamento.decorator.SalvarImagemDecorator;
-import com.pss.imagem.processamento.decorator.VisualizarDecorator;
 import java.io.IOException;
 
 public class Principal {
