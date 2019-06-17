@@ -29,7 +29,7 @@ public class EspelhadaDecorator extends ImagemDecorator {
         largura = imagem.getWidth();
 
         BufferedImage novaImagem = new BufferedImage(largura, altura,
-                BufferedImage.TYPE_INT_ARGB);
+                imagem.getType());
 
         // Create mirror image pixel by pixel 
         for (int y = 0; y < altura; y++) {

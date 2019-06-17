@@ -12,6 +12,7 @@ import com.pss.imagem.processamento.decorator.EspelhadaDecorator;
 import com.pss.imagem.processamento.decorator.GlowDecorator;
 import com.pss.imagem.processamento.decorator.ImagemComponente;
 import com.pss.imagem.processamento.decorator.NegativaDecorator;
+import com.pss.imagem.processamento.decorator.PixeladaDecorator;
 import com.pss.imagem.processamento.decorator.SepiaDecorator;
 import com.pss.imagem.processamento.decorator.TomDeCinzaDecorator;
 import com.pss.imagem.processamento.decorator.VerdeDecorator;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,7 +50,6 @@ public class MainViewPresenter {
             btnRestaurarPadrao();
         });
 
-       
         view.getImagemAzul().addActionListener((ActionEvent e) -> {
             btnAzul();
         });
@@ -64,27 +65,31 @@ public class MainViewPresenter {
         view.getImagemEspelhada().addActionListener((ActionEvent e) -> {
             btnEspelharImagem();
         });
-        
+
         view.getNegativoImagem().addActionListener((ActionEvent e) -> {
             btnNegativo();
         });
-        
+
         view.getSepia().addActionListener((ActionEvent e) -> {
             btnSepia();
         });
         
+        view.getPixelar().addActionListener((ActionEvent e) -> {
+            btnPixelar();
+        });
+
         view.getTonsDeCinza().addActionListener((ActionEvent e) -> {
             btnTonsDeCinza();
         });
-        
+
         view.getGlowingBlur().addActionListener((ActionEvent e) -> {
             btnGlowingBlur();
         });
-        
+
         view.getBinarizar().addActionListener((ActionEvent e) -> {
             btnBinarizar();
         });
-        
+
     }
 
     private void inicializar() {
@@ -173,7 +178,7 @@ public class MainViewPresenter {
             Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void btnNegativo() {
         boolean selecionado = view.getNegativoImagem().isSelected();
         MainViewMemento m = new MainViewMemento(view);
@@ -188,7 +193,7 @@ public class MainViewPresenter {
             Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void btnSepia() {
         boolean selecionado = view.getSepia().isSelected();
         MainViewMemento m = new MainViewMemento(view);
@@ -203,7 +208,7 @@ public class MainViewPresenter {
             Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void btnTonsDeCinza() {
         boolean selecionado = view.getTonsDeCinza().isSelected();
         MainViewMemento m = new MainViewMemento(view);
@@ -218,7 +223,41 @@ public class MainViewPresenter {
             Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    private void btnPixelar() {
+        boolean selecionado = view.getPixelar().isSelected();
+        MainViewMemento m = new MainViewMemento(view);
+        m.setPixelar(!selecionado);
+        Zelador.adicionarMemento(m);
+
+        if (selecionado) {
+            String resultado = JOptionPane.showInputDialog(view, "Informe o tamanho do Pixel:", "Pixelar Imagem", JOptionPane.PLAIN_MESSAGE);
+            int tamanho = Integer.parseInt(resultado);
+            try {
+                imgComponente = new PixeladaDecorator(imgComponente, tamanho);
+                atualizaImagem(imgComponente.getImagem());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            String mensagem = "Atenção, o filtro 'Pixelar' é do tipo não-reversível. Se "
+                    + "remover o mesmo, todos os filtros aplicados posteriormente a esse serão também "
+                    + "removidos. Deseja continuar?";
+            int resposta = JOptionPane.showConfirmDialog(view, mensagem, "Remoção do Filtro: Pixelar", JOptionPane.YES_NO_OPTION);
+            if(resposta == 0) {
+                btnDesfazer();
+                while(view.getPixelar().isSelected()) {
+                    btnDesfazer();
+                }
+            } else {
+                System.out.println("Não Confirmou!");
+            }
+        }
+
+    }
+
     private void btnGlowingBlur() {
         boolean selecionado = view.getGlowingBlur().isSelected();
         MainViewMemento m = new MainViewMemento(view);
@@ -233,7 +272,7 @@ public class MainViewPresenter {
             Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void btnBinarizar() {
         boolean selecionado = view.getBinarizar().isSelected();
         MainViewMemento m = new MainViewMemento(view);
@@ -276,9 +315,9 @@ public class MainViewPresenter {
         this.view.getGlowingBlur().setSelected(m.isGlowingBlur());
         this.view.getBinarizar().setSelected(m.isBinarizar());
     }
-    
+
     private void btnRestaurarPadrao() {
-        while(Zelador.estados.size()>=1) {
+        while (Zelador.estados.size() >= 1) {
             restauraMemento(Zelador.getUltimoEstado());
             imgComponente = imgComponente.reverter();
         }
@@ -288,4 +327,6 @@ public class MainViewPresenter {
             Logger.getLogger(MainViewPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    
 }

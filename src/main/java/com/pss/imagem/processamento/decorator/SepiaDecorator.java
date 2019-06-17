@@ -27,7 +27,7 @@ public class SepiaDecorator extends ImagemDecorator {
         largura = imagem.getWidth();
 
         BufferedImage novaImagem = new BufferedImage(largura, altura,
-                BufferedImage.TYPE_INT_ARGB);
+                imagem.getType());
 
         //convert to sepia
         for (int y = 0; y < altura; y++) {

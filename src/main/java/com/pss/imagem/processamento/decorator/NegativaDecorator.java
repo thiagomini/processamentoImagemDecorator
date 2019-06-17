@@ -27,7 +27,7 @@ public class NegativaDecorator extends ImagemDecorator {
         largura = imagem.getWidth();
 
         BufferedImage novaImagem = new BufferedImage(largura, altura,
-                BufferedImage.TYPE_INT_ARGB);
+                imagem.getType());
 
         // Convert to negative 
         for (int y = 0; y < altura; y++) {

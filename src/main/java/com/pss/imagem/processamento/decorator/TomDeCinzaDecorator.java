@@ -34,7 +34,7 @@ public class TomDeCinzaDecorator extends ImagemDecorator {
         ImageProducer producer = new FilteredImageSource(imagem.getSource(), filter);
         Image newImg = Toolkit.getDefaultToolkit().createImage(producer);
 
-        BufferedImage novaImagem = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage novaImagem = new BufferedImage(newImg.getWidth(null), newImg.getHeight(null), imagem.getType());
 
         // Draw the image on to the buffered image
         Graphics2D bGr = novaImagem.createGraphics();
