@@ -2,7 +2,7 @@ package com.pss.test;
 
 import com.pss.imagem.processamento.decorator.AzulDecorator;
 import com.pss.imagem.processamento.decorator.EspelhadaDecorator;
-import com.pss.imagem.processamento.decorator.Imagem;
+import com.pss.imagem.processamento.model.Imagem;
 import com.pss.imagem.processamento.decorator.ImagemComponente;
 import com.pss.imagem.processamento.decorator.PixeladaDecorator;
 import com.pss.imagem.processamento.decorator.TomDeCinzaDecorator;

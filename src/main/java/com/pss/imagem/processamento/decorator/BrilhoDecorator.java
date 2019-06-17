@@ -3,6 +3,7 @@ package com.pss.imagem.processamento.decorator;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
 
+//Adaptado de https://bostjan-cigan.com/java-image-binarization-using-otsus-algorithm/
 public class BrilhoDecorator extends ImagemDecorator {
 
     private BufferedImage img;

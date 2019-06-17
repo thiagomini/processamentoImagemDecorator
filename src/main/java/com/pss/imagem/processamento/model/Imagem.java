@@ -1,5 +1,6 @@
-package com.pss.imagem.processamento.decorator;
+package com.pss.imagem.processamento.model;
 
+import com.pss.imagem.processamento.decorator.ImagemComponente;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
