@@ -35,6 +35,9 @@ public class ImagemBuilder {
         reset(caminho);
     }
     
+    public ImagemBuilder(ImagemComponente imagem) {
+        resultado = imagem;
+    }
     public ImagemComponente getResultado() {
         return this.resultado;
     }

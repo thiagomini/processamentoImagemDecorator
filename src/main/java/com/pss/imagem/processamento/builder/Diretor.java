@@ -25,4 +25,16 @@ public class Diretor {
         builder.setImagemVerde();
         builder.setImagemComBrilho(5);
     }
+    
+    public void buildSepiaBrilhoEspelhada() throws InterruptedException {
+        builder.setFiltroSepia();
+        builder.setImagemComBrilho(5);
+        builder.setImagemEspelhada();
+    }
+    
+    public void buildBlurPixelarNegativa() throws InterruptedException {
+        builder.setImagemBlur(5);
+        builder.setImagemPixelada(5);
+        builder.setImagemNegativa();
+    }
 }

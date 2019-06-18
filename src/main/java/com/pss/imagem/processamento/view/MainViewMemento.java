@@ -16,6 +16,9 @@ public class MainViewMemento {
             imagemEspelhada, rotacaoEmGraus, negativoImagem, 
             sepia, pixelar, tonsDeCinza, brilho, blur, glowingBlur,
             binarizar;
+    private boolean btnImgAzul, btnImgVerde, btnImgVermelha, btnImgEspelhada,
+            btnRotacao, btnNegativo, btnSepia, btnPixelar, btnTonsDeCinza, btnBrilho,
+            btnBlur, btnGlowingBlur, btnBinarizar;
 
     public MainViewMemento(MainView view) {
         this.imagemAzul = view.getImagemAzul().isSelected();
@@ -32,6 +35,19 @@ public class MainViewMemento {
         this.glowingBlur = view.getGlowingBlur().isSelected();
         this.binarizar = view.getBinarizar().isSelected();
         
+        this.btnImgAzul = view.getImagemAzul().isEnabled();
+        this.btnImgVerde = view.getImagemVerde().isEnabled();
+        this.btnImgVermelha = view.getImagemVermelha().isEnabled();
+        this.btnImgEspelhada = view.getImagemEspelhada().isEnabled();
+        this.btnRotacao = view.getRotacaoEmGraus().isEnabled();
+        this.btnNegativo = view.getNegativoImagem().isEnabled();
+        this.btnSepia = view.getSepia().isEnabled();
+        this.btnPixelar = view.getPixelar().isEnabled();
+        this.btnTonsDeCinza = view.getTonsDeCinza().isEnabled();
+        this.btnBrilho = view.getBrilho().isEnabled();
+        this.btnBlur = view.getBlur().isEnabled();
+        this.btnGlowingBlur = view.getGlowingBlur().isEnabled();
+        this.btnBinarizar = view.getBinarizar().isEnabled();
     }
 
     public boolean isImagemAzul() {
@@ -137,6 +153,111 @@ public class MainViewMemento {
     public void setBinarizar(boolean binarizar) {
         this.binarizar = binarizar;
     }
+
+    public boolean isBtnImgAzul() {
+        return btnImgAzul;
+    }
+
+    public void setBtnImgAzul(boolean btnImgAzul) {
+        this.btnImgAzul = btnImgAzul;
+    }
+
+    public boolean isBtnImgVerde() {
+        return btnImgVerde;
+    }
+
+    public void setBtnImgVerde(boolean btnImgVerde) {
+        this.btnImgVerde = btnImgVerde;
+    }
+
+    public boolean isBtnImgVermelha() {
+        return btnImgVermelha;
+    }
+
+    public void setBtnImgVermelha(boolean btnImgVermelha) {
+        this.btnImgVermelha = btnImgVermelha;
+    }
+
+    public boolean isBtnImgEspelhada() {
+        return btnImgEspelhada;
+    }
+
+    public void setBtnImgEspelhada(boolean btnImgEspelhada) {
+        this.btnImgEspelhada = btnImgEspelhada;
+    }
+
+    public boolean isBtnRotacao() {
+        return btnRotacao;
+    }
+
+    public void setBtnRotacao(boolean btnRotacao) {
+        this.btnRotacao = btnRotacao;
+    }
+
+    public boolean isBtnNegativo() {
+        return btnNegativo;
+    }
+
+    public void setBtnNegativo(boolean btnNegativo) {
+        this.btnNegativo = btnNegativo;
+    }
+
+    public boolean isBtnSepia() {
+        return btnSepia;
+    }
+
+    public void setBtnSepia(boolean btnSepia) {
+        this.btnSepia = btnSepia;
+    }
+
+    public boolean isBtnPixelar() {
+        return btnPixelar;
+    }
+
+    public void setBtnPixelar(boolean btnPixelar) {
+        this.btnPixelar = btnPixelar;
+    }
+
+    public boolean isBtnTonsDeCinza() {
+        return btnTonsDeCinza;
+    }
+
+    public void setBtnTonsDeCinza(boolean btnTonsDeCinza) {
+        this.btnTonsDeCinza = btnTonsDeCinza;
+    }
+
+    public boolean isBtnBrilho() {
+        return btnBrilho;
+    }
+
+    public void setBtnBrilho(boolean btnBrilho) {
+        this.btnBrilho = btnBrilho;
+    }
+
+    public boolean isBtnBlur() {
+        return btnBlur;
+    }
+
+    public void setBtnBlur(boolean btnBlur) {
+        this.btnBlur = btnBlur;
+    }
+
+    public boolean isBtnGlowingBlur() {
+        return btnGlowingBlur;
+    }
+
+    public void setBtnGlowingBlur(boolean btnGlowingBlur) {
+        this.btnGlowingBlur = btnGlowingBlur;
+    }
+
+    public boolean isBtnBinarizar() {
+        return btnBinarizar;
+    }
+
+    public void setBtnBinarizar(boolean btnBinarizar) {
+        this.btnBinarizar = btnBinarizar;
+    }
+    
     
 
         
